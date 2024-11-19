@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form action="/pedidos/editasave" method="post">
+        <fieldset>
+            <input type="hidden" name="id" value="{{ pedido.id }}">
+            
+            <div>
+                <label for="id_cliente">Cliente: </label>
+                <select id="id_cliente" name="id_cliente" required>
+                    {% for cliente in clientes %}
+                        <option value="{{ cliente.id }}" {% if cliente.id == pedido.id_cliente %} selected {% endif %}>
+                            {{ cliente.nome }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div>
+                <label for="valor_total">Valor Total: </label>
+                <input type="text" name="valor_total" id="valor_total" value="{{ pedido.valor_total }}" required>
+            </div>
+            
+            <div>
+                <label for="data">Data: </label>
+                <input type="date" name="data" id="data" value="{{ pedido.data }}" required>
+            </div>
+            
+            <button type="submit">Salvar</button>
+        </fieldset>
+    </form>
+{% endblock %}

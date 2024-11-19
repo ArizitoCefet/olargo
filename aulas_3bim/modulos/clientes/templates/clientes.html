@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="tb_cliente">
+
+    <div class="add">
+        <a href="/clientes/add">Adicionar Cliente</a>
+    </div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Edita</th>
+            <th>Remove</th>
+        </tr>
+        {% for c in clientes %}
+        <tr>
+            <td>{{c.nome}}</td>
+            <td>{{c.email}}</td>
+            <td><a href="/clientes/edita/{{c.id}}">Editar</a></td>
+            <td><a href="/clientes/remove/{{c.id}}">Remover</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div class="msg">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}

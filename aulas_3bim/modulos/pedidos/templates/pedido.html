@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="tb_pedido">
+    <div class="add">
+        <a href="/pedidos/add">Adicionar Pedido</a>
+    </div>
+    
+    <table>
+        <tr>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Valor Total</th>
+            <th>Edita</th>
+            <th>Remove</th>
+        </tr>
+        {% for p in pedidos %}
+        <tr>
+            <td>{{ p.cliente.nome }}</td>
+            <td>{{ p.data }}</td>
+            <td>{{ p.valor_total }}</td>
+            <td><a href="/pedidos/edita/{{ p.id }}">Editar</a></td>
+            <td><a href="/pedidos/remove/{{ p.id }}">Remover</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div class="msg">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/pedidos/save" method="post">
+        <div>
+            <label for="id_cliente">Nome: </label>
+            <select name="id_cliente" id="id_cliente" required>
+                <option value=""></option>
+                {% for u in clientes %} 
+                <option value="{{u.id}}">{{u.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="valor_total">Valor Total: </label>
+            <input type="number" name="valor_total" id="valor_total" required>
+            </select>
+        </div>
+        <div>
+            <label for="data">Data: </label>
+            <input type="date" name="data" id="data" required>
+        </div>
+        <button type="submit">Salvar</button>
+    </form>
+
+{% endblock %}

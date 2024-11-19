@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="cliente_edita">
+    <form action="/clientes/editasave" method="post">
+        <fieldset>
+            <input type="hidden" name="id" value="{{dados.id}}">
+            <div>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" value="{{dados.nome}}" required>
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" value="{{dados.email}}" required>
+            </div>
+            <button type="submit">Salvar</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}
