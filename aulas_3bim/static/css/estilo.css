@@ -5,7 +5,11 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* Definindo a fonte padrão */
+:root {
+    color: #red;
+    color: f4f4f4;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -13,7 +17,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Estilos para o cabeçalho */
 header {
     background-color: #333;
     padding: 1rem;
@@ -41,10 +44,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff9800; /* Cor de destaque quando o link for hover */
+    color: #red;
 }
 
-/* Estilos principais da página */
 main {
     display:flex;
     align-items: center;
@@ -57,7 +59,6 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos de blocos de conteúdo */
 h1, h2, h3 {
     font-size: 2rem;
     color: #333;
@@ -69,7 +70,6 @@ p {
     margin-bottom: 1.5rem;
 }
 
-/* Estilos de tabelas */
 table {
     width: 100%;
     border-collapse: collapse;
